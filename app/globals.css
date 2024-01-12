@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 100;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-Thin.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-Thin.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 200;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-UltraLight.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-UltraLight.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 300;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-Light.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-Light.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 500;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-Medium.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-Medium.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 600;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-DemiBold.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-DemiBold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 800;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-ExtraBold.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-ExtraBold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 900;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-Black.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-Black.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: IRANYekanXFaNum;
+  font-style: normal;
+  font-weight: 950;
+  src: url('../asset/fonts/woff/IRANYekanXFaNum-ExtraBlack.woff') format('woff'),
+    url('../asset/fonts/woff2/IRANYekanXFaNum-ExtraBlack.woff2') format('woff2');
+  font-display: swap;
+}
+
+html,
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: IRANYekanXFaNum, Arial, sans-serif !important;
+  direction: rtl;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 992px) {
+  .container {
+    width: 100%;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: unset;
+  }
+}
+.container {
+  max-width: 1280px;
+}
+.line-heading:after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  background: #9c5f97;
+  height: 1px;
+  content: '';
+}
+.productShortDesc table {
+  width: 100%;
+}
+.productShortDesc table tr {
+  border-bottom: 1px solid #c8c8c8;
+  line-height: 45px;
+}
+.productShortDesc {
+  font-size: 14px;
+  color: #7a7a7a;
+}
+.productShortDesc table tr td:nth-child(2) {
+  text-align: left;
+}
