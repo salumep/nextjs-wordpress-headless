@@ -1,13 +1,13 @@
 import React from 'react';
-import { IProduct } from '../../types/products';
+import { IProduct } from '../../../types/products';
 import { GET_PRODUCTS_ENDPOINT } from '../../../utils/constant/endPoints';
-import { Icategory } from '../../types/category';
+import { Icategory } from '../../../types/category';
 import Link from 'next/link';
-import BreadCrumb from '../../components/share/BreadCrumb';
-import TopBarLinks from '../../components/singleProduct/TopBarLinks';
-import ProductGallery from '../../components/singleProduct/ProductGallery';
-import ShortDescription from '../../components/singleProduct/ShortDescription';
-import ProductCarousel from '../../components/productCarousel';
+import BreadCrumb from '../../../components/share/BreadCrumb';
+import TopBarLinks from '../../../components/singleProduct/TopBarLinks';
+import ProductGallery from '../../../components/singleProduct/ProductGallery';
+import ShortDescription from '../../../components/singleProduct/ShortDescription';
+import ProductCarousel from '../../../components/productCarousel';
 
 async function getPost(slug: string) {
   const res = await fetch(`${GET_PRODUCTS_ENDPOINT}?slug=${slug}`);

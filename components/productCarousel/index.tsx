@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import ProductCarouselCard from './ProductCarouselCard';
+import ProductCarouselCard from '../product/ProductCard';
 import Link from 'next/link';
-import { GET_PRODUCTS_ENDPOINT } from '../../../utils/constant/endPoints';
+import { GET_PRODUCTS_ENDPOINT } from '../../utils/constant/endPoints';
 import { IProduct } from '../../types/products';
 
 interface Props {

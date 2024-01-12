@@ -2,8 +2,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { banners } from '../../../utils/constant/mainPageBanners';
-
+import { banners } from '../../utils/constant/mainPageBanners';
 
 export default function MainPageBanners() {
   type Banner = {

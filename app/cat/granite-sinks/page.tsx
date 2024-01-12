@@ -1,6 +1,6 @@
-import { IProduct } from '../../types/products';
-import ProductCarouselCard from '../../components/productCarousel/ProductCarouselCard';
-import BreadCrumb from '../../components/share/BreadCrumb';
+import { IProduct } from '../../../types/products';
+import ProductCarouselCard from '../../../components/productCarousel/ProductCard';
+import BreadCrumb from '../../../components/share/BreadCrumb';
 
 export default async function Page() {
   const data = await getData();

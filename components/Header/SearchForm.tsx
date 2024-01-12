@@ -1,7 +1,7 @@
 'use client';
 import React, { ChangeEvent } from 'react';
 import Icon from '../UI/icon';
-import { GET_PRODUCTS_ENDPOINT } from '../../../utils/constant/endPoints';
+import { GET_PRODUCTS_ENDPOINT } from '../../utils/constant/endPoints';
 import { useState } from 'react';
 import { IProduct } from '../../types/products';
 import Image from 'next/image';

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Icon from '../UI/icon';
 import MobileMenu from './MobileMenu';
 import { useState } from 'react';
-import { menu } from '../../../utils/constant/MenuItems';
+import { menu } from '../../utils/constant/MenuItems';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
