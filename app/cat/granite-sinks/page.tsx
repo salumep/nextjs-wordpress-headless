@@ -1,5 +1,5 @@
 import { IProduct } from '../../../types/products';
-import ProductCarouselCard from '../../../components/productCarousel/ProductCard';
+import ProductCarouselCard from '../../../components/product/ProductCard';
 import BreadCrumb from '../../../components/share/BreadCrumb';
 
 export default async function Page() {
