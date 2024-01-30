@@ -2,6 +2,10 @@ import { IProduct } from '../../../types/products';
 import ProductCarouselCard from '../../../components/product/ProductCard';
 import BreadCrumb from '../../../components/share/BreadCrumb';
 import Image from 'next/image';
+import { GET_PRODUCTS_ENDPOINT } from '../../../utils/constant/endPoints';
+
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 export default async function Page() {
   const data = await getData();
@@ -43,13 +47,7 @@ export default async function Page() {
   );
 }
 async function getData() {
-  const res = await fetch(
-    'http://localhost/chromatplus/wp-json/wp/v2/chromatplus_products'
-  );
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
+  const res = await fetch(GET_PRODUCTS_ENDPOINT);
 
   return res.json();
 }

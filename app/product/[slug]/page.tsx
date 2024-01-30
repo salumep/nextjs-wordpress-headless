@@ -6,6 +6,9 @@ import ProductGallery from '../../../components/singleProduct/ProductGallery';
 import ShortDescription from '../../../components/singleProduct/ShortDescription';
 import ProductCarousel from '../../../components/productCarousel';
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 async function getPost(slug: string) {
   const res = await fetch(`${GET_PRODUCTS_ENDPOINT}?slug=${slug}`);
   return res.json();
