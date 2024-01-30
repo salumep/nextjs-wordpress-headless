@@ -1,6 +1,7 @@
 import { IProduct } from '../../../types/products';
 import ProductCarouselCard from '../../../components/product/ProductCard';
 import BreadCrumb from '../../../components/share/BreadCrumb';
+import Image from 'next/image';
 
 export default async function Page() {
   const data = await getData();
@@ -12,17 +13,29 @@ export default async function Page() {
       </div>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4 ">
-          <img src="/images/granite-sink.jpg" className="rounded-md" />
+          <Image
+            src="/images/granite-sink.jpg"
+            alt={'سینک گرانیتی'}
+            width={1920}
+            height={700}
+            className="rounded-md"
+          />
         </div>
         <div className="col-span-8">
-          <img src="/images/granite-sink-2.jpg" className="rounded-md" />
+          <Image
+            src={'/images/granite-sink-2.jpg'}
+            alt={'سینک گرانیتی'}
+            width={1920}
+            height={700}
+            className="rounded-md"
+          />
         </div>
       </div>
       <div className="grid grid-cols-4 gap-6 my-6">
         {data.length > 0 &&
           data.map((product: IProduct) => (
-            <div className=" overflow-hidden   ">
-              <ProductCarouselCard product={product} noWidth={true} />
+            <div className=" overflow-hidden" key={product.id}>
+              <ProductCarouselCard product={product} />
             </div>
           ))}
       </div>

@@ -15,11 +15,7 @@ export default function MainPageBanners() {
 
   return (
     <div className="max-w-full">
-      <Swiper
-        slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
+      <Swiper slidesPerView={1}>
         {banners.map((banner: Banner) => (
           <SwiperSlide key={banner.link}>
             <div

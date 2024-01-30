@@ -42,8 +42,8 @@ export default function SearchForm() {
         </div>
       </div>
       {products.length > 0 &&
-        products.map((product) => (
-          <div className="flex">
+        products.map((product: IProduct) => (
+          <div className="flex" key={product.id}>
             <Image
               src={product.image_gallery[0].url}
               width={50}

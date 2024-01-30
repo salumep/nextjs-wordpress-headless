@@ -13,7 +13,9 @@ export default function BreadCrumb({
     <div className="breadCrumb text-color-text-200 flex text-sm">
       <Link href="/">خانه/</Link>
       {categories &&
-        categories.map((cat: Icategory) => <span>{cat.name}/</span>)}
+        categories.map((cat: Icategory) => (
+          <span key={cat.id}>{cat.name}/</span>
+        ))}
       <div>{currentpageTitle}</div>
     </div>
   );

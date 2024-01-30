@@ -17,19 +17,19 @@ async function getPost(slug: string) {
 export default async function page({ params }: { params: { slug: string } }) {
   const data = await getPost(params.slug);
   const product = data[0];
-  console.log(product);
+
   return (
     <div className="container mb-12">
       <div className="singleProductTopBar py-4 border-b md:flex justify-between items-center border-gray-600">
         <BreadCrumb
-          categories={product.chromatplus_categories}
-          currentpageTitle={product.title.rendered}
+          categories={product?.chromatplus_categories}
+          currentpageTitle={product?.title.rendered}
         />
         <TopBarLinks />
       </div>
       <div className="productTopSection mt-6 lg:grid grid-cols-12 lg:flex items-center">
         <div className="max-w-full col-span-6">
-          <ProductGallery images={product.image_gallery} />
+          <ProductGallery images={product?.image_gallery} />
         </div>
         <div className="col-span-6">
           <ShortDescription product={product} />

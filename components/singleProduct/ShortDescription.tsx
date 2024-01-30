@@ -6,7 +6,6 @@ interface ProductDescriptionProps {
 }
 
 const ShortDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
-  console.log(product);
   return (
     <>
       <div className="">
@@ -19,7 +18,7 @@ const ShortDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
 
         <div
           className="productShortDesc pr-4"
-          dangerouslySetInnerHTML={{ __html: product.product_features || '' }}
+          dangerouslySetInnerHTML={{ __html: product?.product_features || '' }}
         />
         <div className="mt-8 px-2 ">
           <ShopLinkButton />

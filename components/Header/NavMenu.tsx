@@ -9,8 +9,8 @@ export default function NavMenu() {
       <div className=" flex items-center hidden lg:block justify-between">
         <nav className="py-6 b">
           <ul className="flex ml-6">
-            {menu.map((item: menuItem) => (
-              <li className=" pl-3 pr-4">
+            {menu.map((item: menuItem, index: number) => (
+              <li className=" pl-3 pr-4" key={index}>
                 <Link href={`${item.link}`} className="whitespace-nowrap">
                   {item.title}
                 </Link>

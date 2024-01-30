@@ -13,9 +13,12 @@ export default function AboutGraniteSink() {
       <div className="container md:grid grid-cols-12 py-8 ">
         <div className="col-span-7 relative flex justify-end items-end md:pt-12 ">
           <div className="inline-block">
-            <img
+            <Image
               src="/images/banners/index-sink-banner.png"
               className="relative z-10"
+              alt={'درباره ما'}
+              width={769}
+              height={416}
             />
           </div>
         </div>

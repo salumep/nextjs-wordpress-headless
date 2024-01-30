@@ -30,7 +30,7 @@ const ProductCarousel: React.FC<Props> = ({ title = '', link = null }) => {
 
     fetchData();
   }, []); // Empty dependency array ensures the effect runs only once on component mount
-  console.log(productsData);
+
   return (
     <div className="max-w-full  mt-12">
       <div className="carouselTitle mb-8 flex relative line-heading justify-between">
