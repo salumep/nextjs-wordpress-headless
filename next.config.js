@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'wp.chromatplus.ir', 'chromatplus.ir'],
   },
   webpack(config) {
     config.module.rules.push({
