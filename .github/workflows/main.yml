@@ -17,7 +17,7 @@ jobs:
         run: docker build -t front:latest ./front
 
       - name: Copy Next.js App to Server
-        uses: apple boy/scp-action@master
+        uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
