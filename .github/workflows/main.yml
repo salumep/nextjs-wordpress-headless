@@ -17,10 +17,7 @@ jobs:
         run: |
           echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.BACKEND_URL }}" > .env
           echo "NEXT_PUBLIC_FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
-      - name: Configure Docker Credential Helper
-        run: echo '{"credsStore": "secretservice"}' > $HOME/.docker/config.json
-
-        
+    
       - name: Build and Push Docker Image
         env:
           GHCR_REGISTRY: ghcr.io
