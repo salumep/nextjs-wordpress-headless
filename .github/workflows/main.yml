@@ -27,10 +27,17 @@ jobs:
           port: 9011
           script: |
             # Create the /root/front directory if not exists
-            cd  /root/front
+            cd /root/front
 
             # Copy the source code to /root/front
             scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/root/front
+
+            # Check the exit status
+            if [ $? -eq 0 ]; then
+              echo "Files copied successfully."
+            else
+              echo "Failed to copy files. Exit status: $?"
+            fi
 
             # Change to /root directory
             cd /root
