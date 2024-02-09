@@ -26,20 +26,16 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 9011
           script: |
-            # Create the /root/front directory if not exists
+            # Change to the source code directory
             cd /root/front
 
-            # Copy the source code to /root/front
-            scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/root/front
+            # Configure Git to use SSH (if not already configured)
+            git remote set-url origin git@github.com:salumep/nextjs-wordpress-headless.git
 
-            # Check the exit status
-            if [ $? -eq 0 ]; then
-              echo "Files copied successfully."
-            else
-              echo "Failed to copy files. Exit status: $?"
-            fi
+            # Pull the latest code from the main branch
+            git pull origin main
 
-            # Change to /root directory
+            # Change to the deployment directory
             cd /root
 
             # Build Docker image and deploy
