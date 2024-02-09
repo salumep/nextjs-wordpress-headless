@@ -26,11 +26,14 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 9011
           script: |
-            cd /front
+            # Create the /root/front directory if not exists
+            cd  /root/front
 
-            # Push code to server
+            # Copy the source code to /root/front
             scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/root/front
 
+            # Change to /root directory
+            cd /root
+
             # Build Docker image and deploy
-            docker-compose -f docker-compose.yml build front
             docker-compose -f docker-compose.yml up -d --build
