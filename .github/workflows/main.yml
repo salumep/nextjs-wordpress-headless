@@ -18,7 +18,16 @@ jobs:
           echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.BACKEND_URL }}" > .env
           echo "NEXT_PUBLIC_FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
 
-      - name: SSH into VPS, Push Code, and Deploy
+      - name: Build and Push Docker Image
+        env:
+          GHCR_REGISTRY: ghcr.io
+          IMAGE_NAME: ${{ github.repository_owner }}/root_front
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login $GHCR_REGISTRY -u ${{ github.actor }} --password-stdin
+          docker-compose -f docker-compose.yml build front
+          docker-compose -f docker-compose.yml push front
+
+      - name: SSH into VPS and Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_IP }}
@@ -26,11 +35,10 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 9011
           script: |
-            cd /front
+            cd /root/front
 
-            # Push code to server
-            scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/root/front
+            # Pull the updated Docker image
+            docker-compose pull front
 
-            # Build Docker image and deploy
-            docker-compose -f docker-compose.yml build front
-            docker-compose -f docker-compose.yml up -d --build
+            # Deploy the application
+            docker-compose up -d
