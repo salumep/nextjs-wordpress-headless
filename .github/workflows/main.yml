@@ -21,15 +21,15 @@ jobs:
       - name: SSH into VPS, Push Code, and Deploy
         uses: appleboy/ssh-action@master
         with:
-        host: ${{ secrets.VPS_IP }}
-        username: ${{ secrets.VPS_USER }}
-        password: ${{ secrets.VPS_PASSWORD }}
-        script: |
-          cd /front
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            cd /front
 
-          # Push code to server
-          scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/root/front
+            # Push code to server
+            scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/root/front
 
-          # Build Docker image and deploy
-          docker-compose -f docker-compose.yml build front
-          docker-compose -f docker-compose.yml up -d --build
+            # Build Docker image and deploy
+            docker-compose -f docker-compose.yml build front
+            docker-compose -f docker-compose.yml up -d --build
