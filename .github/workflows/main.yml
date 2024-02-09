@@ -1,4 +1,4 @@
-name: CI/CD Workflow
+name: CI/CD Pipeline
 
 on:
   push:
@@ -6,27 +6,30 @@ on:
       - main
 
 jobs:
-  build:
+  deploy-on-vps:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Build Next.js App
-        run: docker build -t front:latest ./front
-
-      - name: Copy Next.js App to Server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./front"
-          target: "/root/front"
-
-      - name: Deploy
+      - name: Create .env file
         run: |
-          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} 'cd /root/front && docker-compose pull && docker-compose up -d'
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.BACKEND_URL }}" > .env
+          echo "NEXT_PUBLIC_FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
+
+      - name: SSH into VPS, Push Code, and Deploy
+        uses: appleboy/ssh-action@master
+        with:
+        host: ${{ secrets.VPS_IP }}
+        username: ${{ secrets.VPS_USER }}
+        password: ${{ secrets.VPS_PASSWORD }}
+        script: |
+          cd /front
+
+          # Push code to server
+          scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }}:/root/front
+
+          # Build Docker image and deploy
+          docker-compose -f docker-compose.yml build front
+          docker-compose -f docker-compose.yml up -d --build
