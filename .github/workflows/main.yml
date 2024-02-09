@@ -17,7 +17,10 @@ jobs:
         run: |
           echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.BACKEND_URL }}" > .env
           echo "NEXT_PUBLIC_FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
+      - name: Configure Docker Credential Helper
+        run: echo '{"credsStore": "secretservice"}' > ~/.docker/config.json
 
+        
       - name: Build and Push Docker Image
         env:
           GHCR_REGISTRY: ghcr.io
@@ -35,7 +38,7 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 9011
           script: |
-            cd /root/front
+            cd /root
 
             # Pull the updated Docker image
             docker-compose pull front
