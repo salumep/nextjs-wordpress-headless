@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-on-vps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.BACKEND_URL }}" > .env
+          echo "NEXT_PUBLIC_FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
+
+      - name: SSH into VPS, Pull Code, and Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: 9011
+          script: |
+            # Change to the source code directory
+            cd /root/front
+
+            # Stash local changes
+            git stash
+
+            # Pull the latest code from the main branch
+            git pull origin main
+
+            # Apply the stashed changes
+            git stash apply
+
+            # Change to the deployment directory
+            cd /root
+
+            # Build Docker image and deploy
+            docker-compose -f docker-compose.yml up -d --build
