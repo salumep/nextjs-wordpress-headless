@@ -11,4 +11,8 @@ export const menu = [
     title: 'ارتباط با ما',
     link: '/contact-us',
   },
+  {
+    title: 'فروشگاه ',
+    link: 'https://chromatshop.com',
+  },
 ];
