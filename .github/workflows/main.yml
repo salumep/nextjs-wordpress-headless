@@ -28,12 +28,16 @@ jobs:
           script: |
             # Change to the source code directory
             cd /root/front
+            
+            # Stash local changes
+            git stash
 
-            # Configure Git to use SSH (if not already configured)
-            git remote set-url origin git@github.com:salumep/nextjs-wordpress-headless.git
+           # Pull the latest code from the main branch
+           git pull origin main
+ 
+           # Apply the stashed changes
+           git stash apply
 
-            # Pull the latest code from the main branch
-            git pull origin main
 
             # Change to the deployment directory
             cd /root
