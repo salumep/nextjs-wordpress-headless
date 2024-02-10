@@ -9,7 +9,7 @@ export const fetchCache = 'force-no-store';
 
 export default async function Page() {
   const data = await getData();
-
+console.log('save changes');
   return (
     <div className="container my-6">
       <div className="breadCrumbWrap mb-6">
