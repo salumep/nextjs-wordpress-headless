@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-     "start": "next start -p 80",
-     "lint": "next lint"
-}
+    "start": "next start -p 80",
+    "lint": "next lint"
+  },
   "dependencies": {
     "next": "^13.5.5",
     "next-images": "^1.8.5",
