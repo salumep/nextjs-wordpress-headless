@@ -18,7 +18,7 @@ jobs:
           echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.BACKEND_URL }}" > .env
           echo "NEXT_PUBLIC_FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
 
-      - name: SSH into VPS, Push Code, and Deploy
+      - name: SSH into VPS, Pull Code, and Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_IP }}
@@ -28,16 +28,15 @@ jobs:
           script: |
             # Change to the source code directory
             cd /root/front
-            
+
             # Stash local changes
             git stash
 
-           # Pull the latest code from the main branch
-           git pull origin main
- 
-           # Apply the stashed changes
-           git stash apply
+            # Pull the latest code from the main branch
+            git pull origin main
 
+            # Apply the stashed changes
+            git stash apply
 
             # Change to the deployment directory
             cd /root
