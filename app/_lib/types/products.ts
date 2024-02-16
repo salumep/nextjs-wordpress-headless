@@ -1,3 +1,5 @@
+import { Icategory } from './category';
+
 export interface IProduct {
   id?: number;
   date?: string;
@@ -8,6 +10,7 @@ export interface IProduct {
   title?: {
     rendered: string;
   };
+  chromatplus_categories?: Icategory[];
   product_features?: string | HTMLElement;
   content?: {
     rendered: string;

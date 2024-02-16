@@ -1,15 +1,16 @@
-import { IProduct } from '../../../types/products';
-import ProductCarouselCard from '../../../components/product/ProductCard';
-import BreadCrumb from '../../../components/share/BreadCrumb';
+import { IProduct } from '../../../_lib/types/products';
+import ProductCarouselCard from '../../../_components/product/ProductCard';
+import BreadCrumb from '../../../_components/share/BreadCrumb';
 import Image from 'next/image';
-import { GET_PRODUCTS_ENDPOINT } from '../../../utils/constant/endPoints';
+import { GET_PRODUCTS_ENDPOINT } from '../../../_lib/contants/endPoints';
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
 
 export default async function Page() {
-  const data = await getData();
-console.log('save changes');
+  const res = await fetch(GET_PRODUCTS_ENDPOINT);
+  const data: IProduct[] = await res.json();
+
   return (
     <div className="container my-6">
       <div className="breadCrumbWrap mb-6">
@@ -48,6 +49,5 @@ console.log('save changes');
 }
 async function getData() {
   const res = await fetch(GET_PRODUCTS_ENDPOINT);
-
   return res.json();
 }

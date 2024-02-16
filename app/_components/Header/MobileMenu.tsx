@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Modal from 'react-modal';
-import { menuItem } from '../../types/menuItem';
+import { menuItem } from '../../_lib/types/menuItem';
 
 interface MobileMenuProps {
   toggle: boolean;

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Icon from '../UI/icon';
-import { IProduct } from '../../types/products';
+import { IProduct } from '../../_lib/types/products';
 
 interface Props {
   product: IProduct;

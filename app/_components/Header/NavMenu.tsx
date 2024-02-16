@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 import React from 'react';
-import { menu } from '../../utils/constant/MenuItems';
-import { menuItem } from '../../types/menuItem';
+import { menu } from '../../_lib/contants/menuItems';
+import { menuItem } from '../../_lib/types/menuItem';
 export default function NavMenu() {
   return (
     <>

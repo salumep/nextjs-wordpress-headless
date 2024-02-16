@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icategory } from '../../types/category';
+import { Icategory } from '../../_lib/types/category';
 import Link from 'next/link';
 
 export default function BreadCrumb({
@@ -7,7 +7,7 @@ export default function BreadCrumb({
   currentpageTitle,
 }: {
   categories?: Icategory[];
-  currentpageTitle: string;
+  currentpageTitle?: string;
 }) {
   return (
     <div className="breadCrumb text-color-text-200 flex text-sm">

@@ -1,6 +1,7 @@
 import React from 'react';
-import { IProduct } from '../../types/products';
+import { IProduct } from '../../_lib/types/products';
 import ShopLinkButton from './ShopLinkButton';
+
 interface ProductDescriptionProps {
   product: IProduct;
 }

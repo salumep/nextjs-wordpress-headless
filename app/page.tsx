@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import MainPagebanners from '../components/index/MainPagebanners';
-import AboutUs from '../components/index/AboutUs';
-import ProductCarousel from '../components/productCarousel';
-import AboutGraniteSink from '../components/index/AboutGraniteSink';
+import MainPagebanners from './_components/index/MainPagebanners';
+import AboutUs from './_components/index/AboutUs';
+import ProductCarousel from './_components/ProductCarousel';
+import AboutGraniteSink from './_components/index/AboutGraniteSink';
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { IAttachment } from '../../types/products';
+import { IAttachment } from '../../_lib/types/products';
 import Image from 'next/image';
 import { useState } from 'react';
 import Modal from 'react-modal';
