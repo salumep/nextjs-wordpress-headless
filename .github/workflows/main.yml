@@ -27,7 +27,7 @@ jobs:
           port: 9011
           script: |
             # Change to the source code directory
-            cd /root/front
+            cd /root/chromat/front
 
             # Stash local changes
             git stash
@@ -39,7 +39,7 @@ jobs:
             git stash apply
 
             # Change to the deployment directory
-            cd /root
+            cd /root/chromat
 
             # Build Docker image and deploy
             docker-compose -f docker-compose.yml up -d --build
