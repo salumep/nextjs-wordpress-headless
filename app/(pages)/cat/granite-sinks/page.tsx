@@ -1,8 +1,8 @@
 import { IProduct } from '../../../_lib/types/products';
-import ProductCarouselCard from '../../../_components/product/ProductCard';
 import BreadCrumb from '../../../_components/share/BreadCrumb';
 import Image from 'next/image';
-import { GET_PRODUCTS_ENDPOINT } from '../../../_lib/contants/endPoints';
+import { GET_PRODUCTS_ENDPOINT } from '../../../_lib/constants/endPoints';
+import ProductListContent from '../../../_components/ProductListContent';
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
@@ -12,12 +12,12 @@ export default async function Page() {
   const data: IProduct[] = await res.json();
 
   return (
-    <div className="container my-6">
+    <div className="container ">
       <div className="breadCrumbWrap mb-6">
         <BreadCrumb currentpageTitle={'سینک گرانیتی '} />
       </div>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-4 ">
+      <div className="grid lg:grid-cols-12 gap-4">
+        <div className="col-span-4 hidden lg:block ">
           <Image
             src="/images/granite-sink.jpg"
             alt={'سینک گرانیتی'}
@@ -36,18 +36,8 @@ export default async function Page() {
           />
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-6 my-6">
-        {data.length > 0 &&
-          data.map((product: IProduct) => (
-            <div className=" overflow-hidden" key={product.id}>
-              <ProductCarouselCard product={product} />
-            </div>
-          ))}
-      </div>
+
+      {data.length > 0 && <ProductListContent data={data} />}
     </div>
   );
-}
-async function getData() {
-  const res = await fetch(GET_PRODUCTS_ENDPOINT);
-  return res.json();
 }

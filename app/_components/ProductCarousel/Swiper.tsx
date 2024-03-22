@@ -1,7 +1,7 @@
 'use client';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import ProductCarouselCard from '../product/ProductCard';
+import ProductCard from '../product/ProductCard';
 import { IProduct } from '../../_lib/types/products';
 
 export default function SwiperComponent({
@@ -10,7 +10,12 @@ export default function SwiperComponent({
   productsData: IProduct[];
 }) {
   return (
-    <Swiper slidesPerView="auto" spaceBetween={18} loop={true}>
+    <Swiper
+      slidesPerView={'auto'}
+      spaceBetween={18}
+      loop={true}
+      watchSlidesProgress={true}
+    >
       {productsData.map((product, index) => (
         <SwiperSlide
           key="index"
@@ -20,7 +25,7 @@ export default function SwiperComponent({
             height: 'auto',
           }}
         >
-          <ProductCarouselCard product={product} />
+          <ProductCard product={product} />
         </SwiperSlide>
       ))}
     </Swiper>

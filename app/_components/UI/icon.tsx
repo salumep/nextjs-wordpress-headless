@@ -10,6 +10,13 @@ import UsersIcon from './users.svg';
 import ShopIcon from './shop.svg';
 import BarsIcon from './bars.svg';
 import callIcon from './call.svg';
+import standard from './standard.svg';
+import quality from './quality.svg';
+import orgonomic from './orgonomic.svg';
+import consultation from './consultation.svg';
+import hygienic from './hygienic.svg';
+import resistant from './resistant.svg';
+import easyToUse from './easyToUse.svg';
 
 interface IconProps {
   name: string;
@@ -32,6 +39,13 @@ const iconTypes: IconTypes = {
   shop: ShopIcon,
   bars: BarsIcon,
   call: callIcon,
+  consultation: consultation,
+  orgonomic: orgonomic,
+  quality: quality,
+  standard: standard,
+  hygienic: hygienic,
+  resistant: resistant,
+  easyToUse: easyToUse,
 };
 
 const Icon: FC<IconProps> = ({ name, ...props }) => {

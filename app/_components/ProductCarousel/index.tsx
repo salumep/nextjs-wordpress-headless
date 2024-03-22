@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { GET_PRODUCTS_ENDPOINT } from '../../_lib/contants/endPoints';
+import { GET_PRODUCTS_ENDPOINT } from '../../_lib/constants/endPoints';
 import { IProduct } from '../../_lib/types/products';
 import { notFound } from 'next/navigation';
 import SwiperComponent from './Swiper';
@@ -23,7 +23,7 @@ export default async function ProductCarousel({
   }
 
   return (
-    <div className="max-w-full  mt-12">
+    <div className="max-w-full  md:mt-12 mt-6">
       <div className="carouselTitle mb-8 flex relative line-heading justify-between">
         <div className="text-xl bg-white pl-4 relative z-10 color-text-gray-300">
           {title}

@@ -1,0 +1,86 @@
+export const sinkColors = [
+  {
+    id: 'black',
+    title: 'مشکی',
+    value: 'B-007',
+    img: '/images/product-colors/B007.png',
+  },
+  {
+    id: 'dark_gray',
+    title: 'نوک مدادی',
+    value: 'CB-011',
+    img: '/images/product-colors/CB011.png',
+  },
+  {
+    id: 'White_golden_streak ',
+    title: 'سفید رگه طلایی',
+    value: 'WG-001',
+    img: '/images/product-colors/WG001.png',
+  },
+  {
+    id: 'gray',
+    title: 'طوسی',
+    value: 'G-012',
+    img: '/images/product-colors/G012.png',
+  },
+  {
+    id: 'black_golden_streak',
+    title: 'مشکی رگه طلایی',
+    value: 'BG-004',
+    img: '/images/product-colors/BG004.png',
+  },
+  {
+    id: 'white',
+    title: 'سفید',
+    value: 'W-003',
+    img: '/images/product-colors/W003.png',
+  },
+  {
+    id: 'dark_gray_golden_streak',
+    title: 'نوک مدادی رگه طلایی',
+    value: 'CBG-008',
+    img: '/images/product-colors/CBG008.png',
+  },
+  {
+    id: 'black_white_streak',
+    title: 'مشکی رگه سفید',
+    value: 'BW-006',
+    img: '/images/product-colors/BW006.png',
+  },
+  {
+    id: 'cream',
+    title: 'کرم',
+    value: 'C-014',
+    img: '/images/product-colors/C014.png',
+  },
+  {
+    id: 'dark_gray_white_streak',
+    title: 'نوک مدادی رگه سفید',
+    value: 'CBS-009',
+    img: '/images/product-colors/CBS009.png',
+  },
+  {
+    id: 'pink',
+    title: 'صورتی',
+    value: 'P-016',
+    img: '/images/product-colors/P016.png',
+  },
+  {
+    id: 'sand',
+    title: 'شنی',
+    value: 'CS-015',
+    img: '/images/product-colors/CS015.png',
+  },
+  {
+    id: 'brown',
+    title: 'قهوه ای',
+    value: 'BR-018',
+    img: '/images/product-colors/BR018.png',
+  },
+  {
+    id: 'blue',
+    title: 'آبی',
+    value: 'NB-017',
+    img: '/images/product-colors/NB017.png',
+  },
+];

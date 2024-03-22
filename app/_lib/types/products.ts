@@ -10,8 +10,9 @@ export interface IProduct {
   title?: {
     rendered: string;
   };
+  product_features: { [key: string]: string[] | null };
   chromatplus_categories?: Icategory[];
-  product_features?: string | HTMLElement;
+  product_short_desc?: string | HTMLElement;
   content?: {
     rendered: string;
     protected?: boolean;

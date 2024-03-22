@@ -2,9 +2,9 @@
 import React from 'react';
 import Icon from '../UI/icon';
 
-export default function topBarLinks() {
+export default function TopBarLinks() {
   return (
-    <div className="navLinks flex text-sm mt-4 md:mt-0 ">
+    <div className="navLinks flex text-sm">
       <div className="flex  ml-6 text-primary flex items-center ">
         <Icon name="download" />
         <span className="pr-2">کاتالوگ محصولات</span>

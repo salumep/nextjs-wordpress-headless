@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Icon from '../UI/icon';
 import MobileMenu from './MobileMenu';
 import { useState } from 'react';
-import { menu } from '../../_lib/contants/menuItems';
+import { menu } from '../../_lib/constants/menuItems';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,49 +14,64 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
   return (
-    <div>
-      <header>
-        <div className="flex flex-col-reverse lg:grid grid-cols-3 container justify-between py-2 items-center border-b ">
-          <div className="hidden lg:flex items-center">
-            <div className="whitespace-nowrap">
+    <header className="py-4">
+      <div className="header-top container">
+        <div className="flex  items-center ">
+          <div className="mobile-header block lg:hidden">
+            <div
+              className="mobile-navigation  p-1 xs:ml-2 sm:ml-5"
+              onClick={() => setMobileMenuOpen((current) => !current)}
+            >
+              <Icon name="bars" />
+            </div>
+            <MobileMenu
+              toggle={mobileMenuOpen}
+              items={menu}
+              onCloseModalHandler={onCloseModalHandler}
+            />
+          </div>
+          <div className="flex-1 flex items-center">
+            <div className="whitespace-nowrap pl-7 text-xl">
               <Link href="/">کرومات پلاس</Link>
             </div>
-            <NavMenu />
-          </div>
-          <div className="flex items-center mt-4 w-full lg:w-auto">
-            <SearchForm />
-          </div>
-          <div className="flex justify-between w-full lg:w-auto lg:justify-end ">
-            <div className="mobile-header block lg:hidden">
-              <div
-                className="mobile-navigation  p-1 xs:ml-2 sm:ml-5"
-                onClick={() => setMobileMenuOpen((current) => !current)}
-              >
-                <Icon name="bars" />
-              </div>
-              <MobileMenu
-                toggle={mobileMenuOpen}
-                items={menu}
-                onCloseModalHandler={onCloseModalHandler}
-              />
+            <div className=" items-center flex-1 hidden lg:flex  w-full lg:w-auto">
+              <SearchForm />
             </div>
-            <div className="whitespace-nowrap  block lg:hidden">
-              <Link href="/"> کرومات پلاس</Link>
+          </div>
+          <div className="flex-1 flex justify-end">
+            <div className="flex">
+              <Link
+                href="#"
+                target="_blank"
+                className=" py-1 md:py-2 text-xs md:text-sm ml-4 rounded-md  flex items-center px-2 lg:px-4 border bg-primary text-white border-primary "
+              >
+                <Icon name="users" />
+                <span className="pr-1">خرید همکار</span>
+              </Link>
             </div>
 
             <div className="flex">
               <Link
                 href="#"
                 target="_blank"
-                className=" py-1 md:py-2 rounded-md text-sm flex items-center px-4 border text-primary border-primary "
+                className=" py-1 md:py-2 rounded-md text-xs md:text-sm flex items-center px-2 lg:px-4 border text-primary border-primary "
               >
-                <Icon name="users" />
-                <span className="pr-1">خرید همکار</span>
+                <Icon name="shop" />
+                <span className="pr-1">فروشگاه</span>
               </Link>
             </div>
           </div>
         </div>
-      </header>
-    </div>
+      </div>
+      <div className="flex flex-col-reverse lg:grid grid-cols-3 container justify-between  items-center  ">
+        <div className="hidden lg:flex items-center">
+          <NavMenu />
+        </div>
+
+        <div className="flex justify-between w-full  lg:hidden lg:justify-end mt-4">
+          <SearchForm />
+        </div>
+      </div>
+    </header>
   );
 }

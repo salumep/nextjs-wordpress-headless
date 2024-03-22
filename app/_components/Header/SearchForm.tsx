@@ -1,10 +1,11 @@
 'use client';
 import React, { ChangeEvent } from 'react';
 import Icon from '../UI/icon';
-import { GET_PRODUCTS_ENDPOINT } from '../../_lib/contants/endPoints';
+import { GET_PRODUCTS_ENDPOINT } from '../../_lib/constants/endPoints';
 import { useState } from 'react';
 import { IProduct } from '../../_lib/types/products';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SearchForm() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -29,10 +30,10 @@ export default function SearchForm() {
   };
 
   return (
-    <div className="relative max-w-full w-full mb-2 lg:my-0 lg:w-[400px] md:p-2">
+    <div className="relative max-w-full w-full mb-2 lg:my-0  md:p-2">
       <div className="relative">
         <input
-          className="w-full  p-2 pr-12  rounded-md bg-gray-500 text-sm "
+          className="w-full py-3 p-2 pr-12  rounded-md bg-gray-500 text-sm "
           type="text"
           placeholder="نام محصول مورد نظر خود را جستجو کنید"
           onChange={HandleSearchProducts}
@@ -41,18 +42,22 @@ export default function SearchForm() {
           <Icon name="search" />
         </div>
       </div>
-      {products.length > 0 &&
-        products.map((product: IProduct) => (
-          <div className="flex" key={product.id}>
-            <Image
-              src={product.image_gallery[0].url}
-              width={50}
-              height={50}
-              alt=""
-            />
-            <div>{product.title?.rendered}</div>
-          </div>
-        ))}
+      <div className="absolute z-20 bg-white w-full p-4">
+        {products.length > 0 &&
+          products.slice(0, 5).map((product: IProduct) => (
+            <Link href={`/product/${product.slug}`} target="_blank">
+              <div className="flex mb-4" key={product.id}>
+                <Image
+                  src={product.image_gallery[0].url}
+                  width={50}
+                  height={50}
+                  alt=""
+                />
+                <div className="pr-2">{product.title?.rendered}</div>
+              </div>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 }

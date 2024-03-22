@@ -9,9 +9,9 @@ interface Props {
   product: IProduct;
 }
 
-const productCarouselCard: React.FC<Props> = ({ product }) => {
+const ProductArchiveCard: React.FC<Props> = ({ product }) => {
   return (
-    <div className="bg-white border border-gray-700 w-[301px] p-6 rounded-md">
+    <div className="bg-white border border-gray-700  p-6 rounded-md">
       <div className="carouselCardTop flex justify-between text-color-text-300 items-center ">
         <div className="ellipsis-2 h-[52px]">{product.title?.rendered}</div>
       </div>
@@ -51,4 +51,4 @@ const productCarouselCard: React.FC<Props> = ({ product }) => {
     </div>
   );
 };
-export default productCarouselCard;
+export default ProductArchiveCard;
