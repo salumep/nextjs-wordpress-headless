@@ -45,8 +45,12 @@ export default function SearchForm() {
       <div className="absolute z-20 bg-white w-full p-4">
         {products.length > 0 &&
           products.slice(0, 5).map((product: IProduct) => (
-            <Link href={`/product/${product.slug}`} target="_blank">
-              <div className="flex mb-4" key={product.id}>
+            <Link
+              href={`/product/${product.slug}`}
+              target="_blank"
+              key={product.id}
+            >
+              <div className="flex mb-4">
                 <Image
                   src={product.image_gallery[0].url}
                   width={50}

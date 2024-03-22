@@ -8,7 +8,10 @@ export default function ContactBar() {
       <div className="max-w-[1076px] md:bg-white mx-auto rounded-2xl  md:-mt-12 relative z-10 py-7 md:px-4   md:shadow-[0_5px_39px_rgba(67,73,79,0.09)]">
         <div className="md:grid-cols-4 grid-cols-2 grid gap-2 md:gap-2">
           {contactBarInfo.map((contact) => (
-            <div className=" flex items-center text-center cursor-pointer border md:border-none border-gray-600 rounded-md p-2 md:p-0">
+            <div
+              className=" flex items-center text-center cursor-pointer border md:border-none border-gray-600 rounded-md p-2 md:p-0"
+              key={contact.id}
+            >
               <div className="  bg-primary w-[52px] h-[52px] rounded-md flex items-center justify-center  hover:scale-105 transition-transform   ">
                 <Icon name={contact.icon} />
               </div>

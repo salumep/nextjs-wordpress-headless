@@ -1,8 +1,8 @@
 import MainPagebanners from './_components/index/MainPagebanners';
 import AboutUs from './_components/index/AboutUs';
 import ProductCarousel from './_components/ProductCarousel';
-import AboutGraniteSink from './_components/index/AboutgraniteSink';
 import ContactBar from './_components/index/ContactBar';
+import AboutGraniteSink from './_components/index/AboutGraniteSink';
 
 export default function Home() {
   return (
