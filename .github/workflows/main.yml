@@ -38,8 +38,5 @@ jobs:
             # Apply the stashed changes
             git stash apply
 
-            # Change to the deployment directory
-            cd /root/chromat
-
             # Build Docker image and deploy
             docker-compose -f docker-compose.yml up -d --build
