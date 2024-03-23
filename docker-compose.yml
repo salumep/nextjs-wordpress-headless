@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  # Next.js container
+  front:
+    build:
+      context: /
+      dockerfile: Dockerfile
+    container_name: nextjs_container
+    restart: always
+    ports:
+      - "8082:80"
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
