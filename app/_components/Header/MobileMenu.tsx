@@ -40,12 +40,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       >
         <div className="MobileMenuWrap  h-full w-full z-20 bg-white right-0 top-0 ">
           <div className="MobileMenuLogo pt-4 pb-2  border-b mb-1 border-light-gray-150">
-            <Image
-              src="/images/logo.png"
-              width={90}
-              height={29}
-              alt="barghchi"
-            />
+            کرومات پلاس
           </div>
           <div className="topMobileMenu text-sm">
             {items.map((item, index) => (

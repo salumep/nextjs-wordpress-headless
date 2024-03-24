@@ -42,13 +42,14 @@ export default function SearchForm() {
           <Icon name="search" />
         </div>
       </div>
-      <div className="absolute z-20 bg-white w-full p-4">
+      <div className="absolute z-20 bg-white w-full ">
         {products.length > 0 &&
           products.slice(0, 5).map((product: IProduct) => (
             <Link
               href={`/product/${product.slug}`}
               target="_blank"
               key={product.id}
+              className="px-4  py-2 block"
             >
               <div className="flex mb-4">
                 <Image
