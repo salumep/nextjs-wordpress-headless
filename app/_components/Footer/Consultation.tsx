@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Icon from '../UI/icon';
 export default function Consultation() {
   return (
-    <div className="px-4 py-6  md:flex mx-6 md:mx-auto items-center max-w-[758px] shadow-[0px_0px_12px_0px_#00000080] bg-white relative z-10 -mb-20  rounded-md">
+    <div className="px-4 py-6  md:flex mx-6 md:mx-auto items-center max-w-[758px] shadow-[0px_0px_12px_0px_#00000080] bg-white relative z-10 md:-mb-20 -mb-36  rounded-md">
       <div className="flex">
         <div className=" w-28 px-4">
           <Image src="/images/expert.png" width="48" height="48" alt={''} />

@@ -41,7 +41,7 @@ export default function Header() {
           <div className="flex-1 flex justify-end">
             <div className="flex">
               <Link
-                href="#"
+                href="https://api.whatsapp.com/send/?phone=989123222162"
                 target="_blank"
                 className=" py-1 md:py-2 text-xs md:text-sm ml-4 rounded-md  flex items-center px-2 lg:px-4 border bg-primary text-white border-primary "
               >
@@ -52,7 +52,7 @@ export default function Header() {
 
             <div className="flex">
               <Link
-                href="#"
+                href="https://chromatshop.com"
                 target="_blank"
                 className=" py-1 md:py-2 rounded-md text-xs md:text-sm flex items-center px-2 lg:px-4 border text-primary border-primary "
               >

@@ -2,28 +2,35 @@
 import React from 'react';
 import Icon from '../UI/icon';
 import Consultation from './Consultation';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
     <>
       <Consultation />
-      <div className="bg-gray-500 pt-32  ">
+      <div className="bg-gray-500 pt-48 md:pt-32  ">
         <div className="lg:grid grid-cols-3 container">
           <div>
-            <p className="lg:mb-4 font-semibold text-xl text-center lg:text-right">
+            <p className="lg:mb-4 font-semibold md:text-xl  text-center lg:text-right">
               کرومات پلاس
             </p>
             <ul className="leading-9 flex lg:block justify-center text-sm">
-              <li className="pl-4">درباره ما</li>
-              <li className="pl-4">فروشگاه کرومات</li>
-              <li className="pl-4">کورین کرومات</li>
+              <li className="pl-4">
+                <Link href="#">درباره ما</Link>
+              </li>
+              <li className="pl-4">
+                <Link href="https://chromatshop.com/">فروشگاه کرومات</Link>
+              </li>
+              <li className="pl-4">
+                <Link href="https://corianchromat.ir/">کورین کرومات</Link>
+              </li>
             </ul>
           </div>
           <div className="text-center lg:text-right">
-            <p className="lg:mb-4 font-semibold text-xl">تماس با ما</p>
+            <p className="lg:mb-4 font-semibold md:text-xl">تماس با ما</p>
             <ul className="leading-9 text-sm">
               <li>
-                <span>آدرس فروشگاه : شهرزیبا,احمدکاشانی, پلاک 45</span>
+                <span>آدرس فروشگاه : شهرزیبا,احمدکاشانی, پلاک 43</span>
               </li>
               <li>
                 <span>شماره‌های تماس: ۰۹۱۲۳۲۲۲۱۶۲ - ۴۴۳۵۷۷۷۲</span>
