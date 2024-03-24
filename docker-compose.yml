@@ -3,7 +3,7 @@ services:
   # Next.js container
   front:
     build:
-      context: /
+      context: .
       dockerfile: Dockerfile
     container_name: nextjs_container
     restart: always
