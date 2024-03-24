@@ -55,7 +55,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                   <></>
                 ) : (
                   <div className="py-4">
-                    <Link href={`#`}>
+                    <Link href={`${item.link}`}>
                       <span className={`flex ${item.class}`}>
                         {item.icon && (
                           <span

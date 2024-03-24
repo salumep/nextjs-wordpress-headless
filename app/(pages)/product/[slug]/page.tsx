@@ -22,7 +22,7 @@ export async function generateMetadata(
   const res = await fetch(`${GET_PRODUCTS_ENDPOINT}?slug=${params.slug}`);
   const result = await res.json();
   const product = result[0];
-  console.log(product.title.rendered);
+
   return {
     title: product.title.rendered,
     alternates: {
