@@ -24,6 +24,9 @@ export default function Footer() {
               <li className="pl-4">
                 <Link href="https://corianchromat.ir/">کورین کرومات</Link>
               </li>
+              <li className="pl-4">
+                <Link href="https://corianchromat.ir/">کورین کرومات</Link>
+              </li>
             </ul>
           </div>
           <div className="text-center lg:text-right">
