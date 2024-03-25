@@ -6,17 +6,20 @@ import { useState } from 'react';
 import { IProduct } from '../../_lib/types/products';
 import Image from 'next/image';
 import Link from 'next/link';
+import { throttle } from 'lodash';
 
 export default function SearchForm() {
   const [products, setProducts] = useState<IProduct[]>([]);
-  const HandleSearchProducts = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value.trim().length == 0 || !event) {
+
+  // Throttle the search function to prevent too frequent API calls
+  const throttledHandleSearchProducts = throttle(async (event) => {
+    if (event.target.value.trim().length === 0 || !event) {
       return;
     } else {
       const res = await fetch(
-        `${GET_PRODUCTS_ENDPOINT}?subtype="chromatPlus_products"&search=${event.target.value}`,
+        `${GET_PRODUCTS_ENDPOINT}?subtype="product"&search=${event.target.value}`,
         {
-          method: 'get',
+          method: 'GET',
           headers: new Headers({
             'Content-Type': 'application/x-www-form-urlencoded',
             Accept: 'application/json',
@@ -27,6 +30,10 @@ export default function SearchForm() {
       const productsData = await res.json();
       setProducts(productsData);
     }
+  }, 500);
+
+  const HandleSearchProducts = (event: ChangeEvent<HTMLInputElement>) => {
+    throttledHandleSearchProducts(event);
   };
 
   return (
