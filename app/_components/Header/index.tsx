@@ -7,6 +7,7 @@ import Icon from '../UI/icon';
 import MobileMenu from './MobileMenu';
 import { useState } from 'react';
 import { menu } from '../../_lib/constants/menuItems';
+import Image from 'next/image';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,8 +32,12 @@ export default function Header() {
             />
           </div>
           <div className="flex-1 flex items-center">
-            <div className="whitespace-nowrap pl-7 text-xl">
-              <Link href="/">کرومات پلاس</Link>
+            <div className="whitespace-nowrap pl-7 text-xl ">
+              <div className="md:h-9 md:w-40 h-5 w-24 relative">
+                <Link href="/">
+                  <Image src="/images/chromatplus.png" alt="کرومات پلاس" fill />
+                </Link>
+              </div>
             </div>
             <div className=" items-center flex-1 hidden lg:flex  w-full lg:w-auto">
               <SearchForm />
@@ -50,11 +55,11 @@ export default function Header() {
               </Link>
             </div>
 
-            <div className="flex">
+            <div className="hidden lg:flex">
               <Link
                 href="https://chromatshop.com"
                 target="_blank"
-                className=" py-1 md:py-2 rounded-md text-xs md:text-sm flex items-center px-2 lg:px-4 border text-primary border-primary "
+                className=" py-1 md:py-2 rounded-md text-xs  md:text-sm flex items-center px-2 lg:px-4 border text-primary border-primary "
               >
                 <Icon name="shop" />
                 <span className="pr-1">فروشگاه</span>

@@ -88,8 +88,8 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
                       />
                     </div>
 
-                    <div className="absolute top-7 left-7">
-                      {/* <Icon name="more" /> */}
+                    <div className="absolute top-8 left-8">
+                      <Icon name="more" />
                     </div>
                   </div>
                 </>
@@ -144,7 +144,9 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
           >
             <div className=" modal-header p-5 pb-1 flex justify-between">
               <h2>تصاویر محصول</h2>
-              <button onClick={onClose}>{/* <Icon name="close" /> */}</button>
+              <button onClick={onClose}>
+                <Icon name="close" />
+              </button>
             </div>
             <div className="pt-2 pb-4">
               <div className="w-full border-t border-light-gray-200"></div>

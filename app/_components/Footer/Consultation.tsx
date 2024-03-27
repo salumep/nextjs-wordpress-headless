@@ -21,7 +21,10 @@ export default function Consultation() {
       <div className="text-center mt-4 md:mt-0">
         <div className="whitespace-nowrap inline-flex mx-auto md:flex items-center p-2 border border-gray-800 rounded-md">
           <Icon name="call" />
-          <Link href="#" className="text-sm text-color-text-800 pr-1">
+          <Link
+            href="https://api.whatsapp.com/send/?phone=989123222162"
+            className="text-sm text-color-text-800 pr-1"
+          >
             تماس بگیرید
           </Link>
         </div>

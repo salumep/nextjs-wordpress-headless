@@ -2,14 +2,18 @@
 import React, { ChangeEvent } from 'react';
 import Icon from '../UI/icon';
 import { GET_PRODUCTS_ENDPOINT } from '../../_lib/constants/endPoints';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IProduct } from '../../_lib/types/products';
 import Image from 'next/image';
+
 import Link from 'next/link';
 import { throttle } from 'lodash';
+import { useRef } from 'react';
 
 export default function SearchForm() {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const resultWrap = useRef<HTMLDivElement>(null);
+  const [showResultWrap, setShowResultWrap] = useState<boolean>(false);
 
   // Throttle the search function to prevent too frequent API calls
   const throttledHandleSearchProducts = throttle(async (event) => {
@@ -29,11 +33,28 @@ export default function SearchForm() {
 
       const productsData = await res.json();
       setProducts(productsData);
+      setShowResultWrap(true);
     }
   }, 500);
 
   const HandleSearchProducts = (event: ChangeEvent<HTMLInputElement>) => {
     throttledHandleSearchProducts(event);
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', closeResultWrap);
+    return () => {
+      document.removeEventListener('mousedown', closeResultWrap);
+    };
+  });
+  const closeResultWrap = (e: MouseEvent): void => {
+    if (
+      resultWrap.current &&
+      showResultWrap &&
+      !resultWrap.current.contains(e.target as HTMLDivElement)
+    ) {
+      setShowResultWrap(false);
+    }
   };
 
   return (
@@ -49,7 +70,12 @@ export default function SearchForm() {
           <Icon name="search" />
         </div>
       </div>
-      <div className="absolute z-20 bg-white w-full ">
+      <div
+        className={`absolute z-20 bg-white w-full ${
+          showResultWrap ? '' : 'hidden'
+        } `}
+        ref={resultWrap}
+      >
         {products.length > 0 &&
           products.slice(0, 5).map((product: IProduct) => (
             <Link

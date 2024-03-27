@@ -6,14 +6,14 @@ export default function ShopLinkButton() {
     <div className="flex justify-between items-center">
       <Link
         className="bg-primary text-white text-center flex-1 py-2 rounded-md max-w-[390px]"
-        href="#"
+        href=""
       >
         لینک خرید
       </Link>
-      <div className="flex items-center">
+      {/* <div className="flex items-center pr-2">
         <input type="checkbox" />
         <span className="pr-2">مقایسه</span>
-      </div>
+      </div> */}
     </div>
   );
 }

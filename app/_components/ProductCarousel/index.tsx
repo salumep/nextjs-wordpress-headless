@@ -25,7 +25,7 @@ export default async function ProductCarousel({
   return (
     <div className="max-w-full  md:mt-12 mt-6">
       <div className="carouselTitle mb-8 flex relative line-heading justify-between">
-        <div className="text-xl bg-white pl-4 relative z-10 color-text-gray-300">
+        <div className="md:text-xl bg-white pl-4 relative z-10 color-text-gray-300">
           {title}
         </div>
         {link && (
