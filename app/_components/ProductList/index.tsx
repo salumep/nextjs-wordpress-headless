@@ -1,8 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { IProduct } from '../../_lib/types/products';
-import ProductArchiveCard from '../product/ProductArchiveCard';
-import ProductArchiveCardMobile from '../product/ProductArchiveCardMobile';
+import ProductCard from '../productCard/ProductCard';
+import ProductCardMobile from '../productCard/ProductCardMobile';
 
 export default function ProductListContent({ data }: { data: IProduct[] }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -29,9 +29,9 @@ export default function ProductListContent({ data }: { data: IProduct[] }) {
       {data.map((product: IProduct) => (
         <div className="overflow-hidden" key={product.id}>
           {windowWidth < 768 ? (
-            <ProductArchiveCardMobile product={product} />
+            <ProductCardMobile product={product} />
           ) : (
-            <ProductArchiveCard product={product} />
+            <ProductCard product={product} />
           )}
         </div>
       ))}

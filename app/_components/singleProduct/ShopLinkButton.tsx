@@ -10,10 +10,6 @@ export default function ShopLinkButton() {
       >
         لینک خرید
       </Link>
-      {/* <div className="flex items-center pr-2">
-        <input type="checkbox" />
-        <span className="pr-2">مقایسه</span>
-      </div> */}
     </div>
   );
 }

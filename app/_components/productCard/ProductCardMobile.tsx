@@ -9,7 +9,7 @@ interface Props {
   product: IProduct;
 }
 
-const ProductArchiveCardMobile: React.FC<Props> = ({ product }) => {
+const ProductCardMobile: React.FC<Props> = ({ product }) => {
   return (
     <div className="bg-white flex  md:block border border-gray-700 p-4 rounded-md">
       <div className="carouselCardImage ">
@@ -31,11 +31,6 @@ const ProductArchiveCardMobile: React.FC<Props> = ({ product }) => {
           <div>
             <span className="ml-4">مدل: دو لگن</span> <span>سایز: 76</span>
           </div>
-
-          {/* <div className="flex text-sm">
-            <input type="checkbox" />
-            <span className="pr-2">مقایسه</span>
-          </div> */}
         </div>
 
         <div className="caroudelCardButtons flex mt-4">
@@ -53,4 +48,4 @@ const ProductArchiveCardMobile: React.FC<Props> = ({ product }) => {
     </div>
   );
 };
-export default ProductArchiveCardMobile;
+export default ProductCardMobile;

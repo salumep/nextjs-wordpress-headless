@@ -5,11 +5,11 @@ export const menu = [
   },
   {
     title: 'درباره ما',
-    link: '/abouts-us',
+    link: '/page/about-us',
   },
   {
     title: 'ارتباط با ما',
-    link: '/contact-us',
+    link: '/page/contact-us',
   },
   {
     title: 'فروشگاه ',

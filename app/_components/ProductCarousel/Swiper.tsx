@@ -1,7 +1,7 @@
 'use client';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import ProductCard from '../product/ProductCard';
+import ProductCard from '../productCard/ProductCard';
 import { IProduct } from '../../_lib/types/products';
 
 export default function SwiperComponent({
@@ -25,7 +25,7 @@ export default function SwiperComponent({
             height: 'auto',
           }}
         >
-          <ProductCard product={product} />
+          <ProductCard product={product} width={300} />
         </SwiperSlide>
       ))}
     </Swiper>

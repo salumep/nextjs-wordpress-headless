@@ -2,7 +2,7 @@ import { IProduct } from '../../../_lib/types/products';
 import BreadCrumb from '../../../_components/share/BreadCrumb';
 import Image from 'next/image';
 import { GET_PRODUCTS_ENDPOINT } from '../../../_lib/constants/endPoints';
-import ProductListContent from '../../../_components/ProductListContent';
+import ProductList from '../../../_components/ProductList';
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
@@ -37,7 +37,7 @@ export default async function Page() {
         </div>
       </div>
 
-      {data.length > 0 && <ProductListContent data={data} />}
+      {data.length > 0 && <ProductList data={data} />}
     </div>
   );
 }
