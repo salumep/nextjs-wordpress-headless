@@ -25,11 +25,20 @@ const ProductCardMobile: React.FC<Props> = ({ product }) => {
       </div>
       <div className="flex-1  flex flex-col justify-between pr-4">
         <div className="carouselCardTop flex justify-between text-color-text-300 items-center ">
-          <div className="ellipsis-2 text-sm">{product.title?.rendered}</div>
+          <Link href={`/product/${product.slug}`}>
+            <div className="ellipsis-2 text-sm">{product.title?.rendered}</div>{' '}
+          </Link>
         </div>
         <div className="carouselCardExtraInfo flex justify-between mt-4 text-xs text-color-text-200">
-          <div>
-            <span className="ml-4">مدل: دو لگن</span> <span>سایز: 76</span>
+          <div className="flex">
+            <div className="ml-4">
+              مدل:
+              <span>{product.product_features.model}</span>
+            </div>
+            <div>
+              سایز:
+              <span>{product.product_features.size}</span>
+            </div>
           </div>
         </div>
 
@@ -38,7 +47,7 @@ const ProductCardMobile: React.FC<Props> = ({ product }) => {
             <Icon name="cart" />
           </div>
           <Link
-            href="#"
+            href={`/product/${product.slug}`}
             className="bg-white color-primary border border-gray-700 mr-2 py-1 text-sm flex-1 flex items-center justify-center  rounded-md text-primary "
           >
             نمایش محصول

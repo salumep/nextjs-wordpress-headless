@@ -17,11 +17,11 @@ const ProductCard: React.FC<Props> = ({ product, width }) => {
         width ? `w-[${width}px]` : ''
       }`}
     >
-      <div className="carouselCardTop flex justify-between text-color-text-300 items-center ">
-        <div className="ellipsis-2 h-[52px]">{product.title?.rendered}</div>
-      </div>
-      <div className="carouselCardImage mt-4">
-        <Link href={`/product/${product.slug}`}>
+      <Link href={`/product/${product.slug}`}>
+        <div className="carouselCardTop flex justify-between text-color-text-300 items-center ">
+          <div className="ellipsis-2 h-[52px]">{product.title?.rendered}</div>
+        </div>
+        <div className="carouselCardImage mt-4">
           <Image
             src={product.image_gallery[0].url}
             width={253}
@@ -29,11 +29,18 @@ const ProductCard: React.FC<Props> = ({ product, width }) => {
             alt="sink"
             className="rounded-md "
           />
-        </Link>
-      </div>
+        </div>
+      </Link>
       <div className="carouselCardExtraInfo d flex justify-between mt-4 text-xs text-color-text-200">
-        <div>
-          <span className="ml-4">مدل: دو لگن</span> <span>سایز: 76</span>
+        <div className="flex">
+          <div className="ml-4">
+            مدل:
+            <span>{product.product_features.model}</span>
+          </div>
+          <div>
+            سایز:
+            <span>{product.product_features.size}</span>
+          </div>
         </div>
       </div>
 
