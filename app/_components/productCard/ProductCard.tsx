@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Icon from '../UI/icon';
 import { IProduct } from '../../_lib/types/products';
+import Button from '../share/Button';
 
 interface Props {
   product: IProduct;
@@ -44,16 +45,18 @@ const ProductCard: React.FC<Props> = ({ product, width }) => {
         </div>
       </div>
 
-      <div className="caroudelCardButtons flex mt-4">
-        <div className="bg-primary p-2 rounded-md">
-          <Icon name="cart" />
+      <div className="caroudelCardButtons flex mt-4 w-full">
+        <div>
+          <Button
+            iconPosition="center"
+            shape="primary"
+            iconName="cart"
+            size="small"
+          />
         </div>
-        <Link
-          href="#"
-          className="bg-white color-primary border border-gray-700 mr-2 py-1 flex-1 flex items-center justify-center  rounded-md text-primary "
-        >
-          نمایش محصول
-        </Link>
+        <div className="flex-1 pr-2">
+          <Button shape="outline" to="#" label="نمایش محصول" size="full" />
+        </div>
       </div>
     </div>
   );

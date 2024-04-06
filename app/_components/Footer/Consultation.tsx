@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Icon from '../UI/icon';
+import Button from '../share/Button';
 export default function Consultation() {
   return (
     <div className="px-4 py-6  md:flex mx-6 md:mx-auto items-center max-w-[758px] shadow-[0px_0px_12px_0px_#00000080] bg-white relative z-10 md:-mb-20 -mb-36  rounded-md">
@@ -19,15 +20,13 @@ export default function Consultation() {
         </div>
       </div>
       <div className="text-center mt-4 md:mt-0">
-        <div className="whitespace-nowrap inline-flex mx-auto md:flex items-center p-2 border border-gray-800 rounded-md">
-          <Icon name="call" />
-          <Link
-            href="https://api.whatsapp.com/send/?phone=989123222162"
-            className="text-sm text-color-text-800 pr-1"
-          >
-            تماس بگیرید
-          </Link>
-        </div>
+        <Button
+          iconName="call"
+          label="تماس بگیرید"
+          iconPosition="right"
+          to="https://api.whatsapp.com/send/?phone=989123222162"
+          shape="secondary"
+        />
       </div>
     </div>
   );

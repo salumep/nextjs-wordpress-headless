@@ -8,6 +8,7 @@ import MobileMenu from './MobileMenu';
 import { useState } from 'react';
 import { menu } from '../../_lib/constants/menuItems';
 import Image from 'next/image';
+import Button from '../share/Button';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -44,26 +45,25 @@ export default function Header() {
             </div>
           </div>
           <div className="flex-1 flex justify-end">
-            <div className="flex">
-              <Link
-                href="https://api.whatsapp.com/send/?phone=989123222162"
-                target="_blank"
-                className=" py-1 md:py-2 text-xs md:text-sm ml-4 rounded-md  flex items-center px-2 lg:px-4 border bg-primary text-white border-primary "
-              >
-                <Icon name="users" />
-                <span className="pr-1">خرید همکار</span>
-              </Link>
+            <div>
+              <Button
+                to="https://api.whatsapp.com/send/?phone=989123222162"
+                label="خرید همکار"
+                newTab={true}
+                shape="primary"
+                iconName="users"
+                iconPosition="left"
+              />
             </div>
-
-            <div className="hidden lg:flex">
-              <Link
-                href="https://chromatshop.com"
-                target="_blank"
-                className=" py-1 md:py-2 rounded-md text-xs  md:text-sm flex items-center px-2 lg:px-4 border text-primary border-primary "
-              >
-                <Icon name="shop" />
-                <span className="pr-1">فروشگاه</span>
-              </Link>
+            <div className="hidden lg:flex mr-4">
+              <Button
+                to="https://chromatshop.com"
+                label="فروشگاه"
+                newTab={true}
+                shape="outline"
+                iconName="shop"
+                iconPosition="left"
+              />
             </div>
           </div>
         </div>
