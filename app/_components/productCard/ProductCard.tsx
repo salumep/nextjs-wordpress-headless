@@ -20,11 +20,11 @@ const ProductCard: React.FC<Props> = ({ product, width }) => {
     >
       <Link href={`/product/${product.slug}`}>
         <div className="carouselCardTop flex justify-between text-color-text-300 items-center ">
-          <div className="ellipsis-2 h-[52px]">{product.title?.rendered}</div>
+          <div className="ellipsis-2 h-[52px]">{product.title}</div>
         </div>
         <div className="carouselCardImage mt-4">
           <Image
-            src={product.image_gallery[0].url}
+            src={product.imageGallery[0].url}
             width={253}
             height={119}
             alt="sink"
@@ -36,11 +36,11 @@ const ProductCard: React.FC<Props> = ({ product, width }) => {
         <div className="flex">
           <div className="ml-4">
             مدل:
-            <span>{product.product_features.model}</span>
+            <span>{product.productFeatures.model}</span>
           </div>
           <div>
             سایز:
-            <span>{product.product_features.size}</span>
+            <span>{product.productFeatures.size}</span>
           </div>
         </div>
       </div>

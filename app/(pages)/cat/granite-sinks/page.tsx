@@ -1,15 +1,53 @@
 import { IProduct } from '../../../_lib/types/products';
 import BreadCrumb from '../../../_components/share/BreadCrumb';
 import Image from 'next/image';
-import { GET_PRODUCTS_ENDPOINT } from '../../../_lib/constants/endPoints';
 import ProductList from '../../../_components/ProductList';
+import { allProductsQuery } from '../../../queries/allProducts';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
-
+/**
+ * ------------------------------------------------------------------------------------------------
+ * get all products
+ * ------------------------------------------------------------------------------------------------
+ */
+async function getAllProducts() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    next: {
+      revalidate: 60,
+    },
+    body: JSON.stringify({
+      query: allProductsQuery,
+    }),
+  });
+  const { data } = await res.json();
+  if (data && data.products.nodes) {
+    return data.products.nodes;
+  } else {
+    return notFound(); // Handle 404 if product not found
+  }
+}
+/**
+ * ------------------------------------------------------------------------------------------------
+ *add seo metadata
+ * ------------------------------------------------------------------------------------------------
+ */
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'سینک گرانیتی کرومات پلاس',
+    alternates: {
+      canonical: '/',
+    },
+  };
+}
 export default async function Page() {
-  const res = await fetch(GET_PRODUCTS_ENDPOINT);
-  const data: IProduct[] = await res.json();
+  const data: IProduct[] = await getAllProducts();
 
   return (
     <div className="container ">

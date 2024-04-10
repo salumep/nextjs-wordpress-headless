@@ -3,6 +3,33 @@ import { GET_PRODUCTS_ENDPOINT } from '../../_lib/constants/endPoints';
 import { IProduct } from '../../_lib/types/products';
 import { notFound } from 'next/navigation';
 import SwiperComponent from './Swiper';
+import { allProductsQuery } from '../../queries/allProducts';
+
+/**
+ * ------------------------------------------------------------------------------------------------
+ * get all products
+ * ------------------------------------------------------------------------------------------------
+ */
+async function getAllProducts() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    next: {
+      revalidate: 60,
+    },
+    body: JSON.stringify({
+      query: allProductsQuery,
+    }),
+  });
+  const { data } = await res.json();
+  if (data && data.products.nodes) {
+    return data.products.nodes;
+  } else {
+    return notFound(); // Handle 404 if product not found
+  }
+}
 
 export default async function ProductCarousel({
   title = '',
@@ -11,16 +38,7 @@ export default async function ProductCarousel({
   title?: string;
   link?: string | null;
 }) {
-  let productsData: IProduct[] | null = null;
-  try {
-    const data = await fetch(`${GET_PRODUCTS_ENDPOINT}`);
-    productsData = await data.json();
-  } catch (error) {
-    throw error || new Error('An unexpected error occurred');
-  }
-  if (!productsData) {
-    return notFound();
-  }
+  const productsData: IProduct[] = await getAllProducts();
 
   return (
     <div className="max-w-full  md:mt-12 mt-6">

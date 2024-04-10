@@ -1,37 +1,55 @@
 'use client';
 import React, { ChangeEvent } from 'react';
 import Icon from '../UI/icon';
-import { GET_PRODUCTS_ENDPOINT } from '../../_lib/constants/endPoints';
 import { useState, useEffect } from 'react';
 import { IProduct } from '../../_lib/types/products';
 import Image from 'next/image';
-
 import Link from 'next/link';
 import { throttle } from 'lodash';
 import { useRef } from 'react';
+import { searchProductsQuery } from '../../queries/searchProducts';
+import { notFound } from 'next/navigation';
 
 export default function SearchForm() {
   const [products, setProducts] = useState<IProduct[]>([]);
   const resultWrap = useRef<HTMLDivElement>(null);
   const [showResultWrap, setShowResultWrap] = useState<boolean>(false);
 
-  // Throttle the search function to prevent too frequent API calls
+  /**
+   * ------------------------------------------------------------------------------------------------
+   * get filtered products
+   * ------------------------------------------------------------------------------------------------
+   */
+  async function getFilteredProducts(keyword: string) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        variables: { keyword },
+        query: searchProductsQuery,
+      }),
+    });
+    const { data } = await res.json();
+    if (data && data.products && data.products.nodes) {
+      return data.products.nodes;
+    } else {
+      return notFound();
+    }
+  }
+  /**
+   * ------------------------------------------------------------------------------------------------
+   * search function
+   * ------------------------------------------------------------------------------------------------
+   */
+  //Throttle the search function to prevent too frequent API calls
   const throttledHandleSearchProducts = throttle(async (event) => {
     if (event.target.value.trim().length === 0 || !event) {
       return;
     } else {
-      const res = await fetch(
-        `${GET_PRODUCTS_ENDPOINT}?subtype="product"&search=${event.target.value}`,
-        {
-          method: 'GET',
-          headers: new Headers({
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Accept: 'application/json',
-          }),
-        }
-      );
+      const productsData = await getFilteredProducts(event.target.value);
 
-      const productsData = await res.json();
       setProducts(productsData);
       setShowResultWrap(true);
     }
@@ -72,7 +90,7 @@ export default function SearchForm() {
       </div>
       <div
         className={`absolute z-20 bg-white w-full ${
-          showResultWrap ? '' : 'hidden'
+          showResultWrap ? 'pt-6' : 'hidden'
         } `}
         ref={resultWrap}
       >
@@ -84,14 +102,15 @@ export default function SearchForm() {
               key={product.id}
               className="px-4  py-2 block"
             >
-              <div className="flex mb-4">
+              <div className="flex mb-4 items-center">
                 <Image
-                  src={product.image_gallery[0].url}
+                  src={product.imageGallery[0].url}
                   width={50}
                   height={50}
                   alt=""
+                  className="rounded-md"
                 />
-                <div className="pr-2">{product.title?.rendered}</div>
+                <div className="pr-2">{product.title}</div>
               </div>
             </Link>
           ))}

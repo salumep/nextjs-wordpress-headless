@@ -1,7 +1,5 @@
 import React from 'react';
-import { GET_PRODUCTS_ENDPOINT } from '../../../_lib/constants/endPoints';
 import BreadCrumb from '../../../_components/share/BreadCrumb';
-import TopBarLinks from '../../../_components/singleProduct/TopBarLinks';
 import ProductGallery from '../../../_components/singleProduct/ProductGallery';
 import ShortDescription from '../../../_components/singleProduct/ShortDescription';
 import ProductCarousel from '../../../_components/ProductCarousel';
@@ -9,57 +7,81 @@ import { IProduct } from '../../../_lib/types/products';
 import { notFound } from 'next/navigation';
 import ProductColors from '../../../_components/singleProduct/ProductColors';
 import { Metadata, ResolvingMetadata } from 'next';
+import { productSlugQuery } from '../../../queries/productBySlug';
 
+//
 export const dynamic = 'force-dynamic';
 export const fetchCache = 'force-no-store';
-
+/**
+ * ------------------------------------------------------------------------------------------------
+ * get product by slug
+ * ------------------------------------------------------------------------------------------------
+ */
+async function getProduct(slug: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    next: {
+      revalidate: 60,
+    },
+    body: JSON.stringify({
+      query: productSlugQuery,
+      variables: {
+        slug: decodeURIComponent(slug),
+      },
+    }),
+  });
+  const { data } = await res.json();
+  if (data && data.product) {
+    return data.product;
+  } else {
+    return notFound(); // Handle 404 if product not found
+  }
+}
+/**
+ * ------------------------------------------------------------------------------------------------
+ *add seo metadata
+ * ------------------------------------------------------------------------------------------------
+ */
 export async function generateMetadata(
   { params }: { params: { slug: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // read route params
-
-  const res = await fetch(`${GET_PRODUCTS_ENDPOINT}?slug=${params.slug}`);
-  const result = await res.json();
-  const product = result[0];
+  const product = await getProduct(params.slug);
 
   return {
-    title: product.title.rendered,
+    title: product?.title,
     alternates: {
       canonical: '/',
     },
   };
 }
+/**
+ * ------------------------------------------------------------------------------------------------
+ *main function
+ * ------------------------------------------------------------------------------------------------
+ */
 export default async function page({ params }: { params: { slug: string } }) {
-  let product: IProduct | null = null;
-  try {
-    const res = await fetch(`${GET_PRODUCTS_ENDPOINT}?slug=${params.slug}`);
-    const result: IProduct[] = await res.json();
-    product = result[0];
-  } catch (error) {
-    throw error || new Error('An unexpected error occurred');
-  }
-  if (!product) {
-    return notFound();
-  }
-
+  let product: IProduct;
+  product = await getProduct(params.slug);
   return (
     <div className="container ">
       <BreadCrumb
-        categories={product?.chromatplus_categories}
-        currentpageTitle={product?.title?.rendered}
+        categories={product?.categories?.nodes}
+        currentpageTitle={product?.title}
       />
-      {/* <TopBarLinks /> */}
       <div className="productTopSection mt-6 lg:grid grid-cols-12 lg:flex items-center">
         <div className="max-w-full col-span-6">
-          <ProductGallery images={product?.image_gallery} />
+          <ProductGallery images={product?.imageGallery} />
         </div>
         <div className="col-span-6">
           <ShortDescription product={product} />
         </div>
       </div>
-      {product.product_features.colors && (
-        <ProductColors colors={product.product_features.colors} />
+      {product.productFeatures.colors && (
+        <ProductColors colors={product.productFeatures.colors} />
       )}
 
       <div>

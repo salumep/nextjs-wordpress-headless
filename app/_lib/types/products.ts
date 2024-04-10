@@ -7,12 +7,10 @@ export interface IProduct {
   status?: string;
   type?: string;
   link?: string;
-  title?: {
-    rendered: string;
-  };
-  product_features: { [key: string]: string[] | null };
-  chromatplus_categories?: Icategory[];
-  product_short_desc?: string | HTMLElement;
+  title?: string;
+  productFeatures: { [key: string]: string[] | null };
+  categories?: { nodes: Icategory[] };
+  productShortDesc?: string | HTMLElement;
   content?: {
     rendered: string;
     protected?: boolean;
@@ -25,7 +23,7 @@ export interface IProduct {
     product_catalog: IAttachment;
     product_banner: IAttachment;
   };
-  image_gallery: IAttachment[];
+  imageGallery: IAttachment[];
 }
 
 export type IAttachment = {

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.10",
     "next": "^13.5.5",
     "next-images": "^1.8.5",
     "next-nprogress-bar": "^2.3.5",
