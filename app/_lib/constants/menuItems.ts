@@ -1,7 +1,7 @@
 export const menu = [
   {
     title: 'محصولات',
-    link: '/cat/granite-sinks',
+    link: '/cat/granite-sink',
   },
   {
     title: 'درباره ما',

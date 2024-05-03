@@ -1,6 +1,6 @@
 export const allProductsQuery = `
-query GetProductsEdges {
-    products {
+query GetProductsEdges($slug: String!) {
+    products(where: {categorySlug: [$slug]}) {
       nodes {
       id
       title

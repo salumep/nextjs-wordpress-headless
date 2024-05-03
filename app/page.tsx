@@ -13,7 +13,7 @@ export default function Home() {
       <ContactBar />
 
       <div className="container">
-        <ProductCarousel title="سینک گرانیتی" />
+        <ProductCarousel slug="granite-sink" title="سینک گرانیتی" />
       </div>
       <AboutGraniteSink />
     </main>

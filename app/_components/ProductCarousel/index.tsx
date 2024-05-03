@@ -3,14 +3,14 @@ import { GET_PRODUCTS_ENDPOINT } from '../../_lib/constants/endPoints';
 import { IProduct } from '../../_lib/types/products';
 import { notFound } from 'next/navigation';
 import SwiperComponent from './Swiper';
-import { allProductsQuery } from '../../queries/allProducts';
+import { allProductsQuery } from '../../queries/productsByCategory';
 
 /**
  * ------------------------------------------------------------------------------------------------
  * get all products
  * ------------------------------------------------------------------------------------------------
  */
-async function getAllProducts() {
+async function getAllProducts(slug: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`, {
     method: 'POST',
     headers: {
@@ -21,9 +21,13 @@ async function getAllProducts() {
     },
     body: JSON.stringify({
       query: allProductsQuery,
+      variables: {
+        slug: decodeURIComponent(slug),
+      },
     }),
   });
   const { data } = await res.json();
+
   if (data && data.products.nodes) {
     return data.products.nodes;
   } else {
@@ -34,11 +38,13 @@ async function getAllProducts() {
 export default async function ProductCarousel({
   title = '',
   link = null,
+  slug = '',
 }: {
   title?: string;
   link?: string | null;
+  slug?: string;
 }) {
-  const productsData: IProduct[] = await getAllProducts();
+  const productsData: IProduct[] = await getAllProducts(slug);
 
   return (
     <div className="max-w-full  md:mt-12 mt-6">

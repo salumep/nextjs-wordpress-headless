@@ -94,7 +94,7 @@ export default function SearchForm() {
         } `}
         ref={resultWrap}
       >
-        {products.length > 0 &&
+        {products.length > 0 ? (
           products.slice(0, 5).map((product: IProduct) => (
             <Link
               href={`/product/${product.slug}`}
@@ -113,7 +113,10 @@ export default function SearchForm() {
                 <div className="pr-2">{product.title}</div>
               </div>
             </Link>
-          ))}
+          ))
+        ) : (
+          <>نتیجه ای یافت نشد</>
+        )}
       </div>
     </div>
   );

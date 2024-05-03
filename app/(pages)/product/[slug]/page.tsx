@@ -69,7 +69,7 @@ export default async function page({ params }: { params: { slug: string } }) {
   return (
     <div className="container ">
       <BreadCrumb
-        categories={product?.categories?.nodes}
+        categories={product?.productCategories?.nodes}
         currentpageTitle={product?.title}
       />
       <div className="productTopSection mt-6 lg:grid grid-cols-12 lg:flex items-center">
@@ -85,7 +85,10 @@ export default async function page({ params }: { params: { slug: string } }) {
       )}
 
       <div>
-        <ProductCarousel title="محصولات مشابه" />
+        <ProductCarousel
+          slug={product?.productCategories?.nodes[0].slug}
+          title="محصولات مشابه"
+        />
       </div>
     </div>
   );

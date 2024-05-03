@@ -5,7 +5,7 @@ query GetProduct($slug:ID!)  {
     title
     date
     slug
-    categories {
+    productCategories {
       nodes {
         id
         name

@@ -9,7 +9,7 @@ export interface IProduct {
   link?: string;
   title?: string;
   productFeatures: { [key: string]: string[] | null };
-  categories?: { nodes: Icategory[] };
+  productCategories?: { nodes: Icategory[] };
   productShortDesc?: string | HTMLElement;
   content?: {
     rendered: string;

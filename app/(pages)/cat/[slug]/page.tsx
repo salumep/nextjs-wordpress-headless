@@ -2,7 +2,7 @@ import { IProduct } from '../../../_lib/types/products';
 import BreadCrumb from '../../../_components/share/BreadCrumb';
 import Image from 'next/image';
 import ProductList from '../../../_components/ProductList';
-import { allProductsQuery } from '../../../queries/allProducts';
+import { allProductsQuery } from '../../../queries/productsByCategory';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
@@ -13,7 +13,7 @@ export const fetchCache = 'force-no-store';
  * get all products
  * ------------------------------------------------------------------------------------------------
  */
-async function getAllProducts() {
+async function getAllProducts(slug: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT}`, {
     method: 'POST',
     headers: {
@@ -24,9 +24,13 @@ async function getAllProducts() {
     },
     body: JSON.stringify({
       query: allProductsQuery,
+      variables: {
+        slug: decodeURIComponent(slug),
+      },
     }),
   });
   const { data } = await res.json();
+
   if (data && data.products.nodes) {
     return data.products.nodes;
   } else {
@@ -46,8 +50,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
-export default async function Page() {
-  const data: IProduct[] = await getAllProducts();
+export default async function Page({ params }: { params: { slug: string } }) {
+  const data: IProduct[] = await getAllProducts(params.slug);
 
   return (
     <div className="container ">
